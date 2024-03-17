@@ -9,3 +9,9 @@ class RegistrationForm(UserCreationForm):
     class Meta:
         model = User
         fields = ['username', 'first_name', 'last_name', 'email']
+
+class change_user_data(UserChangeForm):
+    password = None
+    class Meta:
+        model = User
+        fields = ['username', 'first_name', 'last_name', 'email']

@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+    <h1>Welcome</h1>
+    <h1>Hello {{user}}</h1>
+    
+    <div class="container" style="align-items: center; justify-content: center; background-color: grey;">
+        <h1>Change Use Info</h1>
+        {% if messages %}
+        {% for m in messages %}
+            <p class="bg-success p-3 text-white">{{m}}</p>
+        {% endfor %}
+        {% endif %}
+        <form method="post" style="width: 50%; margin: auto;" novalidate>
+            {% if form.non_field_errors %}
+                {% for er in form.non_field_errors %}
+                <div class="alert bg-warning mx-auto" role="alert" style="width:50%;">
+                    <button type="button" class="border border-warning rounded btn-close btn-close-dark m-auto" data-bs-dismiss="alert" arial-label="Close"></button>
+        
+                    <span class="text-center" >{{er}}</span>
+                </div>
+                {% endfor %}
+            {% endif %}
+            {% load crispy_forms_tags %}
+            {% csrf_token %}
+            <!--{{ form|crispy }}-->
+            {% for fm in form %}
+            {{ fm.label_tag }}
+            {{ fm }}
+            {{ fm.errors }}
+            {% endfor %}
+            <br>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</div>
+{% endblock content %}

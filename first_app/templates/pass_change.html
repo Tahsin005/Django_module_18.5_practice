@@ -1,20 +1,21 @@
 {% extends "base.html" %}
 {% block content %}
 <div class="container pt-5" style="width: 50%; margin: auto;">
-    {% if messages %}
-    {% for message in messages %}
+    {% load crispy_forms_tags %}
+    <h1>Password Change</h1>
+    {% if form.non_field_errors %}
+        {% for er in form.non_field_errors %}
         <div class="alert bg-warning mx-auto" role="alert" style="width:50%;">
             <button type="button" class="border border-warning rounded btn-close btn-close-dark m-auto" data-bs-dismiss="alert" arial-label="Close"></button>
 
-            <span class="text-center" >{{message}}</span>
+            <span class="text-center" >{{er}}</span>
         </div>
-    {% endfor %}
+        {% endfor %}
     {% endif %}
-    {% load crispy_forms_tags %}
     <form method="post">
         {% csrf_token %}
         {{ form|crispy }}
-        <button type="submit" class="btn btn-primary mb-5">Login</button>
+        <button type="submit" class="btn btn-primary mb-5">Change Password</button>
     </form>
 </div>
 

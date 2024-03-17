@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container pt-5" style="width: 50%; margin: auto;">
+    {% if messages %}
+    {% for message in messages %}
+        <div class="alert bg-warning mx-auto" role="alert" style="width:50%;">
+            <button type="button" class="border border-warning rounded btn-close btn-close-dark m-auto" data-bs-dismiss="alert" arial-label="Close"></button>
+
+            <span class="text-center" >{{message}}</span>
+        </div>
+    {% endfor %}
+    {% endif %}
+    <div class="welcome-section gap-4">
+        <h1 class="welcome-message">Welcome to you profile</h1>
+        <div class="d-flex align-content-center justify-content-center mt-5">
+            <div class="container d-flex flex-wrap gap-3">
+                <div>
+                    <a class="btn btn-info" href="{% url 'pass_change' %}">Change your password using your old password</a>
+                </div>
+                <div>
+                    <a class="btn btn-warning" href="{% url 'pass_change2' %}">Change your password without using your old password</a>
+                </div>
+            </div>
+            <div class="container d-flex flex-wrap gap-3">
+                <a class="btn btn-primary" href="{% url 'change_data' %}">Change your profile informatnion</a>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
+
+
